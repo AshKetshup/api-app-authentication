@@ -192,7 +192,7 @@ class AppAuthenticationServer(object):
             )
         else:
             sig = customsig.format(
-                appid = self._appid,
+                appid = appid,
                 method = method,
                 timestamp = timestamp,
                 nonce = nonce,
@@ -257,7 +257,7 @@ class AppAuthenticationServer(object):
             )
         else:
             sig = customsig.format(
-                appid = self._appid,
+                appid = appid,
                 method = method,
                 timestamp = timestamp,
                 nonce = nonce
