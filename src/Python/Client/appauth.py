@@ -18,6 +18,16 @@ class InvalidMethod(Exception):
 
 class AppAuthenticationClient(object):
     def __init__(self, appid, appkey):
+        r"""Initializes the AppAuthenticationClient
+
+        Parameters
+        ----------
+            appid : str
+                The the id of the app which will be accessing the API
+            appkey : str
+                The key of the API (this should be different of the appid and shouldn't be the same for multiple app id's)
+                Read more in the Wiki
+        """
         self._appid = appid
         self._appkey = appkey
 
@@ -70,7 +80,8 @@ class AppAuthenticationClient(object):
 
         if customsig is None:
             sig = "{appid}{method}{timestamp}{nonce}{bodyhash}".format(
-                appid = self._appid, 
+                appid = self._appid,
+                method = method,
                 timestamp = timestamp, 
                 nonce = nonce,
                 bodyhash = bodyhash
@@ -78,12 +89,17 @@ class AppAuthenticationClient(object):
         else:
             sig = customsig.format(
                 appid = self._appid,
+                method = method,
                 timestamp = timestamp,
                 nonce = nonce,
                 bodyhash = bodyhash
             )
 
-        hmacsha256 = hmac.new(key=self._appkey.encode(), msg=sig.encode(), digestmod=hashlib.sha256)
+        hmacsha256 = hmac.new(
+            key=self._appkey.encode('utf-8'), 
+            msg=sig.encode('utf-8'), 
+            digestmod=hashlib.sha256
+        )
 
         return {
             "X-Req-Timestamp": timestamp,
@@ -129,17 +145,23 @@ class AppAuthenticationClient(object):
         if customsig is None:
             sig = "{appid}{method}{timestamp}{nonce}".format(
                 appid = self._appid, 
+                method = method,
                 timestamp = timestamp, 
                 nonce = nonce
             )
         else:
             sig = customsig.format(
                 appid = self._appid,
+                method = method,
                 timestamp = timestamp,
                 nonce = nonce
             )
 
-        hmacsha256 = hmac.new(key=self._appkey.encode(), msg=sig.encode(), digestmod=hashlib.sha256)
+        hmacsha256 = hmac.new(
+            key=self._appkey.encode('utf-8'), 
+            msg=sig.encode('utf-8'), 
+            digestmod=hashlib.sha256
+        )
 
         return {
             "X-Req-Timestamp": timestamp,
