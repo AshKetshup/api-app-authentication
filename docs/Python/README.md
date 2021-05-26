@@ -8,9 +8,9 @@
     * [Client Side](#Installation-Client-Side)
 * Usage
     * [Server Side](#Usage-Server-Side)
-        * **[Class Documentation](AppAuthenticationServer)**
+        * **[Class Documentation](AppAuthenticationServer.md)**
     * [Client Side](#Usage-Client-Side)
-        * **[Class Documentation](AppAuthenticationClient)**
+        * **[Class Documentation](AppAuthenticationClient.md)**
     * [Advanced Usage](#Advanced-Usage)
 
 ## Dependencies
@@ -28,6 +28,8 @@ Import the file `AppAuth.swift` located on the `Server` folder onto your project
 Import the file `AppAuth.swift` located on the `Client` folder onto your project
 
 ## Usage Server Side
+
+**File documentation for [client side](appauth_server.md)**
 
 First and foremost import the required files and initialize the library
 ```python
@@ -69,6 +71,8 @@ def getEmail():
 ```
 
 ## Usage Client Side
+
+**File documentation for [client side](appauth_client.md)**
 
 First and foremost import the required files and initialize the library
 ```python

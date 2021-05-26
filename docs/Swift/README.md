@@ -8,9 +8,9 @@
     * [Client Side](#Installation-Client-Side)
 * Usage
     * [Server Side](#Usage-Server-Side)
-        * **[Class Documentation](AppAuthenticationServer)**
+        * **[Class Documentation](AppAuthenticationServer.md)**
     * [Client Side](#Usage-Client-Side)
-        * **[Class Documentation](AppAuthenticationClient)**
+        * **[Class Documentation](AppAuthenticationClient.md)**
     * [Advanced Usage](#Advanced-Usage)
 
 ## Dependencies
@@ -29,7 +29,7 @@ Import the file `AppAuth.swift` located on the `Client` folder onto your project
 
 ## Usage Server Side
 
-**Full documentation for the [server side](AppAuthenticationServer)**
+**Full documentation for the [server side](AppAuthenticationServer.md)**
 
 The example provided below is using [Vapor](https://vapor.codes/) Server
 
@@ -95,7 +95,7 @@ private func getEmail(_ req: Request) throws -> EventLoopFuture<Response> {
 
 ## Usage Client Side
 
-**File documentation for [client side](AppAuthenticationClient)**
+**File documentation for [client side](AppAuthenticationClient.md)**
 
 After having imported the file onto your project import the class and initialize the library
 
