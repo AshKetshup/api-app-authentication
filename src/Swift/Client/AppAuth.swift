@@ -82,14 +82,14 @@ class AppAuthenticationClient {
      Generates the headers required to authenticate with the API for the methods "POST", "PATCH" and "PUT"
      
      - parameters:
-        - body: The body of the request, must be a dictionary `[String: String]` or a `String` if body is a `String` parameter `isJson` must be set to `false`
+        - body: The body of the request, must be a codable struct or a `String` if body is a `String` parameter `isJson` must be set to `false`
         - method: The method of the request, optional, defaults to `.POST`
         - isJson: Sets if the body is a JSON dictionary `[String: String]` or a `String`
         - customSig: The signature format that will be used to generate the request signature, optional, defaults to "{appid}{method}{timestamp}{nonce}"
-     - Precondition: The `body` must have one of the following types `[String: String]` or `String` when the type is `String` the parameter `isJson` must be set to `false`
+     - Precondition: The `body` must be a codable struct or a `String`, when the type is `String` the parameter `isJson` must be set to `false`
      - returns: The dictionary with the headers required for the authentication
      */
-    func generateHeader<T>(body: T, method: PostMethods, isJson: Bool = true, customSig: String = "{appid}{method}{timestamp}{nonce}{bodyhash}") -> [String: String] {
+    func generateHeader<T: Codable>(body: T, method: PostMethods, isJson: Bool = true, customSig: String = "{appid}{method}{timestamp}{nonce}{bodyhash}") -> [String: String] {
         let timestamp = String(Int(Date().timeIntervalSince1970))
         let nonce = UUID().uuidString
         var signature = customSig
@@ -98,7 +98,7 @@ class AppAuthenticationClient {
             "nonce": nonce,
             "appid": self.appId,
             "method": method.rawValue,
-            "bodyhash": isJson ? String(data: (try! JSONEncoder().encode(body as! [String: String])), encoding: .utf8)! : sha256(value: (body as! String))
+            "bodyhash": isJson ? sha256(value: String(data: (try! JSONEncoder().encode(body)), encoding: .utf8)!) : sha256(value: (body as! String))
         ]
         replacePlaceholders(signature: &signature, values: values)
         let hmac = hmac(signature, algorithm: .SHA256, key: self.appKey)

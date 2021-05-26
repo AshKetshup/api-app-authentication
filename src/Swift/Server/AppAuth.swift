@@ -146,18 +146,18 @@ class AppAuthenticationServer {
      
      - parameters:
         - headers: The headers of the request, must be at least the headers mentioned on the `Headers` enum
-        - body: The body of the request, must be a dictionary `[String: String]` or a `String` if body is a `String` parameter `isJson` must be set to `false`
+        - body: The body of the request, must be a codable struct or a `String` if body is a `String` parameter `isJson` must be set to `false`
         - method: The method of the request, optional, defaults to `.POST`
         - isJson: Sets if the body is a JSON dictionary `[String: String]` or a `String`
         - customSig: The signature format that will be used to generate the request signature, optional, defaults to "{appid}{method}{timestamp}{nonce}{bodyhash}"
      - Precondition: The headers dictionary must contain all the headers mentioned on the `Headers` enum
-     - Precondition: The `body` must have one of the following types `[String: String]` or `String` when the type is `String` the parameter `isJson` must be set to `false`
+     - Precondition: The `body` must be a codable struct or a `String`, when the type is `String` the parameter `isJson` must be set to `false`
      - Throws:
         - `AuthenticationError.HeadersNotFound(missingHeader:)`: When some header is missing, the missing header is referenced
         - `AuthenticationError.AppIdNotFound`: The appid was not found in the `authorizedApps`
      - returns: True if authenticated, no other return as all other paths lead to exceptions
      */
-    func authenticateApp<T>(headers: [String: String], body: T, method: PostMethods = .POST, isJson: Bool = true, customSig: String = "{appid}{method}{timestamp}{nonce}{bodyhash}") throws -> Bool {
+    func authenticateApp<T: Codable>(headers: [String: String], body: T, method: PostMethods = .POST, isJson: Bool = true, customSig: String = "{appid}{method}{timestamp}{nonce}{bodyhash}") throws -> Bool {
         try headersPresent(headers: headers)
         
         let appId = headers.first(where: { $0.key == Headers.appId.rawValue })!
@@ -173,7 +173,7 @@ class AppAuthenticationServer {
             "nonce": nonce.value,
             "appid": appId.value,
             "method": method.rawValue,
-            "bodyhash": isJson ? String(data: (try! JSONEncoder().encode(body as! [String: String])), encoding: .utf8)! : sha256(value: (body as! String))
+            "bodyhash": isJson ? sha256(value: String(data: (try! JSONEncoder().encode(body)), encoding: .utf8)!) : sha256(value: (body as! String))
         ]
         
         replacePlaceholders(signature: &signature, values: values)
