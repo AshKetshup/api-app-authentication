@@ -23,7 +23,9 @@ You can find the concept behind this library [here](docs/concept.md)
 
 You can find the documentation per language here:
 
-* Python - Under Construction
+* [Python](docs/Python/README.md)
+    * [appauth.py (server)](docs/Python/appauth_server.md)
+    * [appauth.py (client)](docs/Python/appauth_client.md)
 * [Swift](docs/Swift/README.md)
     * [AppAuth.swift (server)](docs/Swift/AppAuthenticationServer.md)
     * [AppAuth.swift (client)](docs/Swift/AppAuthenticationClient.md)
