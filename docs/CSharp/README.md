@@ -17,7 +17,14 @@
 
 **if using the binary**
 
-* _None_
+* **if using .NET 5 or newer**
+    * _None_
+* **if using other versions (.NET Core or .NET Framework)**
+    * [Newtonsoft.Json](https://www.newtonsoft.com/json)
 
 **if compiling the source**
 * [Vsxmd](https://www.nuget.org/packages/Vsxmd/) - Generates the documentation in markdown in compilation time
+* **if using .NET 5 or newer**
+    * _None_
+* **if using other versions (.NET Core or .NET Framework)**
+    * [Newtonsoft.Json](https://www.newtonsoft.com/json)
