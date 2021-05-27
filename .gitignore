@@ -4,3 +4,7 @@
 src/CSharp/NET5/bin/
 
 src/CSharp/NET5/obj/
+
+src/CSharp/NETCore/bin/
+
+src/CSharp/NETCore/obj/
