@@ -1,2 +1,6 @@
 
 .DS_Store
+
+src/CSharp/NET5/bin/
+
+src/CSharp/NET5/obj/
