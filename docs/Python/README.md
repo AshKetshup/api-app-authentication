@@ -19,7 +19,7 @@ _None_
 
 ## Installation Server Side
 
-Get the latest [release](https://api.github.com/repos/pedrocavaleiro/api-app-authentication/releases/latest) for Python
+Get the latest [release](https://github.com/PedroCavaleiro/api-app-authentication/releases) for Python
 
 Import the file `AppAuth.swift` located on the `Server` folder onto your project
 
