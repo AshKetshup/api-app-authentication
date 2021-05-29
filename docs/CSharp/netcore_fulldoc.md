@@ -8,17 +8,17 @@
   - [#ctor(message)](#M-AppApiAuthenticator-Server-AppIdNotFoundException-#ctor-System-String- 'AppApiAuthenticator.Server.AppIdNotFoundException.#ctor(System.String)')
   - [#ctor(message,inner)](#M-AppApiAuthenticator-Server-AppIdNotFoundException-#ctor-System-String,System-Exception- 'AppApiAuthenticator.Server.AppIdNotFoundException.#ctor(System.String,System.Exception)')
 - [Authorizor](#T-AppApiAuthenticator-Client-Authorizor 'AppApiAuthenticator.Client.Authorizor')
-- [Authorizor](#T-AppApiAuthenticator-Server-Authorizor 'AppApiAuthenticator.Server.Authorizor')
   - [#ctor(appId,appKey)](#M-AppApiAuthenticator-Client-Authorizor-#ctor-System-String,System-String- 'AppApiAuthenticator.Client.Authorizor.#ctor(System.String,System.String)')
-  - [#ctor(apps)](#M-AppApiAuthenticator-Server-Authorizor-#ctor-System-Collections-Generic-Dictionary{System-String,System-String}- 'AppApiAuthenticator.Server.Authorizor.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})')
   - [appId](#F-AppApiAuthenticator-Client-Authorizor-appId 'AppApiAuthenticator.Client.Authorizor.appId')
   - [appKey](#F-AppApiAuthenticator-Client-Authorizor-appKey 'AppApiAuthenticator.Client.Authorizor.appKey')
-  - [apps](#F-AppApiAuthenticator-Server-Authorizor-apps 'AppApiAuthenticator.Server.Authorizor.apps')
   - [generateHeader(method,customSig)](#M-AppApiAuthenticator-Client-Authorizor-generateHeader-AppApiAuthenticator-Common-GetMethods,System-String- 'AppApiAuthenticator.Client.Authorizor.generateHeader(AppApiAuthenticator.Common.GetMethods,System.String)')
   - [generateHeader\`\`1(body,method,isJson,customSig)](#M-AppApiAuthenticator-Client-Authorizor-generateHeader``1-``0,AppApiAuthenticator-Common-PostMethods,System-Boolean,System-String- 'AppApiAuthenticator.Client.Authorizor.generateHeader``1(``0,AppApiAuthenticator.Common.PostMethods,System.Boolean,System.String)')
-  - [authenticateApp(headers,method,customSig)](#M-AppApiAuthenticator-Server-Authorizor-authenticateApp-System-Collections-Generic-Dictionary{System-String,System-String},AppApiAuthenticator-Common-PostMethods,System-String- 'AppApiAuthenticator.Server.Authorizor.authenticateApp(System.Collections.Generic.Dictionary{System.String,System.String},AppApiAuthenticator.Common.PostMethods,System.String)')
-  - [authenticateApp\`\`1(headers,body,method,isJson,customSig)](#M-AppApiAuthenticator-Server-Authorizor-authenticateApp``1-System-Collections-Generic-Dictionary{System-String,System-String},``0,AppApiAuthenticator-Common-PostMethods,System-Boolean,System-String- 'AppApiAuthenticator.Server.Authorizor.authenticateApp``1(System.Collections.Generic.Dictionary{System.String,System.String},``0,AppApiAuthenticator.Common.PostMethods,System.Boolean,System.String)')
-  - [headersPresent(headers)](#M-AppApiAuthenticator-Server-Authorizor-headersPresent-System-Collections-Generic-Dictionary{System-String,System-String}- 'AppApiAuthenticator.Server.Authorizor.headersPresent(System.Collections.Generic.Dictionary{System.String,System.String})')
+- [Authorizor\`1](#T-AppApiAuthenticator-Server-Authorizor`1 'AppApiAuthenticator.Server.Authorizor`1')
+  - [#ctor(apps)](#M-AppApiAuthenticator-Server-Authorizor`1-#ctor-System-Collections-Generic-List{`0}- 'AppApiAuthenticator.Server.Authorizor`1.#ctor(System.Collections.Generic.List{`0})')
+  - [apps](#F-AppApiAuthenticator-Server-Authorizor`1-apps 'AppApiAuthenticator.Server.Authorizor`1.apps')
+  - [authenticateApp(headers,method,customSig)](#M-AppApiAuthenticator-Server-Authorizor`1-authenticateApp-System-Collections-Generic-Dictionary{System-String,System-String},AppApiAuthenticator-Common-PostMethods,System-String- 'AppApiAuthenticator.Server.Authorizor`1.authenticateApp(System.Collections.Generic.Dictionary{System.String,System.String},AppApiAuthenticator.Common.PostMethods,System.String)')
+  - [authenticateApp\`\`1(headers,body,method,isJson,customSig)](#M-AppApiAuthenticator-Server-Authorizor`1-authenticateApp``1-System-Collections-Generic-Dictionary{System-String,System-String},``0,AppApiAuthenticator-Common-PostMethods,System-Boolean,System-String- 'AppApiAuthenticator.Server.Authorizor`1.authenticateApp``1(System.Collections.Generic.Dictionary{System.String,System.String},``0,AppApiAuthenticator.Common.PostMethods,System.Boolean,System.String)')
+  - [headersPresent(headers)](#M-AppApiAuthenticator-Server-Authorizor`1-headersPresent-System-Collections-Generic-Dictionary{System-String,System-String}- 'AppApiAuthenticator.Server.Authorizor`1.headersPresent(System.Collections.Generic.Dictionary{System.String,System.String})')
 - [Common](#T-AppApiAuthenticator-Common 'AppApiAuthenticator.Common')
   - [replacePlaceholders(signature,values)](#M-AppApiAuthenticator-Common-replacePlaceholders-System-String@,System-Collections-Generic-Dictionary{System-String,System-String}- 'AppApiAuthenticator.Common.replacePlaceholders(System.String@,System.Collections.Generic.Dictionary{System.String,System.String})')
 - [Crypto](#T-AppApiAuthenticator-Crypto 'AppApiAuthenticator.Crypto')
@@ -28,7 +28,10 @@
   - [DELETE](#F-AppApiAuthenticator-Common-GetMethods-DELETE 'AppApiAuthenticator.Common.GetMethods.DELETE')
   - [GET](#F-AppApiAuthenticator-Common-GetMethods-GET 'AppApiAuthenticator.Common.GetMethods.GET')
   - [HEAD](#F-AppApiAuthenticator-Common-GetMethods-HEAD 'AppApiAuthenticator.Common.GetMethods.HEAD')
-- [Header](#T-AppApiAuthenticator-Server-Authorizor-Header 'AppApiAuthenticator.Server.Authorizor.Header')
+- [Header](#T-AppApiAuthenticator-Server-Authorizor`1-Header 'AppApiAuthenticator.Server.Authorizor`1.Header')
+- [IAppDbModel](#T-AppApiAuthenticator-Interfaces-IAppDbModel 'AppApiAuthenticator.Interfaces.IAppDbModel')
+  - [AppAuthID](#P-AppApiAuthenticator-Interfaces-IAppDbModel-AppAuthID 'AppApiAuthenticator.Interfaces.IAppDbModel.AppAuthID')
+  - [Key](#P-AppApiAuthenticator-Interfaces-IAppDbModel-Key 'AppApiAuthenticator.Interfaces.IAppDbModel.Key')
 - [InvalidChallengeException](#T-AppApiAuthenticator-Server-InvalidChallengeException 'AppApiAuthenticator.Server.InvalidChallengeException')
   - [#ctor()](#M-AppApiAuthenticator-Server-InvalidChallengeException-#ctor 'AppApiAuthenticator.Server.InvalidChallengeException.#ctor')
   - [#ctor(message)](#M-AppApiAuthenticator-Server-InvalidChallengeException-#ctor-System-String- 'AppApiAuthenticator.Server.InvalidChallengeException.#ctor(System.String)')
@@ -112,17 +115,6 @@ AppApiAuthenticator.Client
 
 Class containing the methods to generate the headers
 
-<a name='T-AppApiAuthenticator-Server-Authorizor'></a>
-## Authorizor `type`
-
-##### Namespace
-
-AppApiAuthenticator.Server
-
-##### Summary
-
-Class containing the methods to authenticate the app with the API
-
 <a name='M-AppApiAuthenticator-Client-Authorizor-#ctor-System-String,System-String-'></a>
 ### #ctor(appId,appKey) `constructor`
 
@@ -137,26 +129,6 @@ Initializes the class, requires the appId and appKey
 | appId | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The appId to be authorized |
 | appKey | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The appKey to use on the authorization |
 
-<a name='M-AppApiAuthenticator-Server-Authorizor-#ctor-System-Collections-Generic-Dictionary{System-String,System-String}-'></a>
-### #ctor(apps) `constructor`
-
-##### Summary
-
-Initializes the authorizor for the server side, requires a dictionary of apps containing the AppID and AppKey
-If the dictionary is empty the exception \`NoAuthorizedApps\` is thrown
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| apps | [System.Collections.Generic.Dictionary{System.String,System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.Dictionary 'System.Collections.Generic.Dictionary{System.String,System.String}') | Dictionary of authorized apps |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [AppApiAuthenticator.Server.NoAuthorizedAppsException](#T-AppApiAuthenticator-Server-NoAuthorizedAppsException 'AppApiAuthenticator.Server.NoAuthorizedAppsException') | The dictionary of authorized apps is empty |
-
 <a name='F-AppApiAuthenticator-Client-Authorizor-appId'></a>
 ### appId `constants`
 
@@ -170,13 +142,6 @@ Holds the appId on the current instance
 ##### Summary
 
 Holds the appKey on the current instance
-
-<a name='F-AppApiAuthenticator-Server-Authorizor-apps'></a>
-### apps `constants`
-
-##### Summary
-
-Holds the dictionary contaning the authorized apps id's and keys
 
 <a name='M-AppApiAuthenticator-Client-Authorizor-generateHeader-AppApiAuthenticator-Common-GetMethods,System-String-'></a>
 ### generateHeader(method,customSig) `method`
@@ -222,7 +187,45 @@ The dictionary with the headers required for the authentication
 | ---- | ----------- |
 | T | The type of the body, this is inferred by the parameter |
 
-<a name='M-AppApiAuthenticator-Server-Authorizor-authenticateApp-System-Collections-Generic-Dictionary{System-String,System-String},AppApiAuthenticator-Common-PostMethods,System-String-'></a>
+<a name='T-AppApiAuthenticator-Server-Authorizor`1'></a>
+## Authorizor\`1 `type`
+
+##### Namespace
+
+AppApiAuthenticator.Server
+
+##### Summary
+
+Class containing the methods to authenticate the app with the API
+
+<a name='M-AppApiAuthenticator-Server-Authorizor`1-#ctor-System-Collections-Generic-List{`0}-'></a>
+### #ctor(apps) `constructor`
+
+##### Summary
+
+Initializes the authorizor for the server side, requires a list of type LT that implements the protocol IAppDbModel
+If the dictionary is empty the exception \`NoAuthorizedApps\` is thrown
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| apps | [System.Collections.Generic.List{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{`0}') | Dictionary of authorized apps |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [AppApiAuthenticator.Server.NoAuthorizedAppsException](#T-AppApiAuthenticator-Server-NoAuthorizedAppsException 'AppApiAuthenticator.Server.NoAuthorizedAppsException') | The list of authorized apps is empty |
+
+<a name='F-AppApiAuthenticator-Server-Authorizor`1-apps'></a>
+### apps `constants`
+
+##### Summary
+
+Holds the list contaning the authorized apps id's and keys
+
+<a name='M-AppApiAuthenticator-Server-Authorizor`1-authenticateApp-System-Collections-Generic-Dictionary{System-String,System-String},AppApiAuthenticator-Common-PostMethods,System-String-'></a>
 ### authenticateApp(headers,method,customSig) `method`
 
 ##### Summary
@@ -248,7 +251,7 @@ true if authenticated, no other return as all other paths lead to exceptions
 | [AppApiAuthenticator.Server.MissingHeaderException](#T-AppApiAuthenticator-Server-MissingHeaderException 'AppApiAuthenticator.Server.MissingHeaderException') | Missing required header for the authorization (the missing header is described in the Message) |
 | [AppApiAuthenticator.Server.InvalidChallengeException](#T-AppApiAuthenticator-Server-InvalidChallengeException 'AppApiAuthenticator.Server.InvalidChallengeException') | Missing required header for the authorization (the missing header is described in the Message) |
 
-<a name='M-AppApiAuthenticator-Server-Authorizor-authenticateApp``1-System-Collections-Generic-Dictionary{System-String,System-String},``0,AppApiAuthenticator-Common-PostMethods,System-Boolean,System-String-'></a>
+<a name='M-AppApiAuthenticator-Server-Authorizor`1-authenticateApp``1-System-Collections-Generic-Dictionary{System-String,System-String},``0,AppApiAuthenticator-Common-PostMethods,System-Boolean,System-String-'></a>
 ### authenticateApp\`\`1(headers,body,method,isJson,customSig) `method`
 
 ##### Summary
@@ -282,7 +285,7 @@ true if authenticated, no other return as all other paths lead to exceptions
 | [AppApiAuthenticator.Server.MissingHeaderException](#T-AppApiAuthenticator-Server-MissingHeaderException 'AppApiAuthenticator.Server.MissingHeaderException') | Missing required header for the authorization (the missing header is described in the Message) |
 | [AppApiAuthenticator.Server.InvalidChallengeException](#T-AppApiAuthenticator-Server-InvalidChallengeException 'AppApiAuthenticator.Server.InvalidChallengeException') | Missing required header for the authorization (the missing header is described in the Message) |
 
-<a name='M-AppApiAuthenticator-Server-Authorizor-headersPresent-System-Collections-Generic-Dictionary{System-String,System-String}-'></a>
+<a name='M-AppApiAuthenticator-Server-Authorizor`1-headersPresent-System-Collections-Generic-Dictionary{System-String,System-String}-'></a>
 ### headersPresent(headers) `method`
 
 ##### Summary
@@ -401,16 +404,42 @@ Method GET
 
 Method HEAD
 
-<a name='T-AppApiAuthenticator-Server-Authorizor-Header'></a>
+<a name='T-AppApiAuthenticator-Server-Authorizor`1-Header'></a>
 ## Header `type`
 
 ##### Namespace
 
-AppApiAuthenticator.Server.Authorizor
+AppApiAuthenticator.Server.Authorizor`1
 
 ##### Summary
 
 Required headers for the authorization
+
+<a name='T-AppApiAuthenticator-Interfaces-IAppDbModel'></a>
+## IAppDbModel `type`
+
+##### Namespace
+
+AppApiAuthenticator.Interfaces
+
+##### Summary
+
+Interface required to initialize the AppAuthServer
+The class contaning the AppID's and Keys must conform with this interface
+
+<a name='P-AppApiAuthenticator-Interfaces-IAppDbModel-AppAuthID'></a>
+### AppAuthID `property`
+
+##### Summary
+
+GUID of the APP
+
+<a name='P-AppApiAuthenticator-Interfaces-IAppDbModel-Key'></a>
+### Key `property`
+
+##### Summary
+
+Key of the APP
 
 <a name='T-AppApiAuthenticator-Server-InvalidChallengeException'></a>
 ## InvalidChallengeException `type`
