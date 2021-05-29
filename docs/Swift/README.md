@@ -15,7 +15,7 @@
 
 ## Dependencies
 
-_None_
+* _None_
 
 ## Installation Server Side
 
