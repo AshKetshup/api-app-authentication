@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.Json;
 
 namespace AppApiAuthenticator.Server {
@@ -8,7 +9,7 @@ namespace AppApiAuthenticator.Server {
     /// <summary>
     /// Class containing the methods to authenticate the app with the API
     /// </summary>
-    public class Authorizor {
+    public class Authorizor<LT> where LT : Interfaces.IAppDbModel {
 
         /// <summary>
         /// Required headers for the authorization
@@ -25,20 +26,21 @@ namespace AppApiAuthenticator.Server {
         }
 
         /// <summary>
-        /// Holds the dictionary contaning the authorized apps id's and keys
+        /// Holds the list contaning the authorized apps id's and keys
         /// </summary>
-        private Dictionary<string, string> apps = new Dictionary<string, string>();
+        private List<LT> apps;
 
-        /// <summary>
-        /// Initializes the authorizor for the server side, requires a dictionary of apps containing the AppID and AppKey
+       /// <summary>
+        /// Initializes the authorizor for the server side, requires a list of type LT that implements the protocol IAppDbModel
         /// If the dictionary is empty the exception `NoAuthorizedApps` is thrown
         /// </summary>
         /// <param name="apps">Dictionary of authorized apps</param>
-        /// <exception cref="NoAuthorizedAppsException">The dictionary of authorized apps is empty</exception>
-        public Authorizor(Dictionary<string, string> apps) {
+        /// <exception cref="NoAuthorizedAppsException">The list of authorized apps is empty</exception>
+        public Authorizor(List<LT> apps) {
             if(apps.Count <= 0) {
                 throw new NoAuthorizedAppsException("No authorized apps, there must be at least one authorized app");
             }
+            this.apps = apps;
         }
 
         /// <summary>
@@ -59,12 +61,10 @@ namespace AppApiAuthenticator.Server {
             string nonce = headers[Header.nonce.getDescription()];
             string timestamp = headers[Header.timestamp.getDescription()];
 
-            var key = String.Empty;
-            try {
-                key = apps[appid];
-            } catch (KeyNotFoundException) {
+            var authorizedApp = apps.FirstOrDefault<LT>(app => app.AppAuthID.ToString() == appid);
+
+            if(authorizedApp == null)
                 throw new AppIdNotFoundException("The App trying to access is not an authorized app");
-            }
 
             string signature = customSig;
             var values = new Dictionary<string, string> {
@@ -77,7 +77,7 @@ namespace AppApiAuthenticator.Server {
 
             Common.replacePlaceholders(ref signature, values);
 
-            var hmac = Crypto.calculateHMACSha256(signature, key);
+            var hmac = Crypto.calculateHMACSha256(signature, authorizedApp.Key);
 
             if(hmac == hsig)
                 return true;
@@ -101,12 +101,10 @@ namespace AppApiAuthenticator.Server {
             string nonce = headers[Header.nonce.getDescription()];
             string timestamp = headers[Header.timestamp.getDescription()];
 
-            var key = String.Empty;
-            try {
-                key = apps[appid];
-            } catch (KeyNotFoundException) {
+            var authorizedApp = apps.FirstOrDefault<LT>(app => app.AppAuthID.ToString() == appid);
+
+            if(authorizedApp == null)
                 throw new AppIdNotFoundException("The App trying to access is not an authorized app");
-            }
 
             string signature = customSig;
             var values = new Dictionary<string, string> {
@@ -118,7 +116,7 @@ namespace AppApiAuthenticator.Server {
 
             Common.replacePlaceholders(ref signature, values);
 
-            var hmac = Crypto.calculateHMACSha256(signature, key);
+            var hmac = Crypto.calculateHMACSha256(signature, authorizedApp.Key);
 
             if(hmac == hsig)
                 return true;
