@@ -1,32 +1,32 @@
 # Types
 
-  - [AppAuthenticationClient](/AppAuthenticationClient)
-  - [AppAuthenticationServer](/AppAuthenticationServer)
-  - [APIAppAuthenticationTests](/APIAppAuthenticationTests)
-  - [CryptoAlgorithm](/CryptoAlgorithm):
+  - [AppAuthenticationClient](AppAuthenticationClient.md)
+  - [AppAuthenticationServer](AppAuthenticationServer.md)
+  - [APIAppAuthenticationTests](APIAppAuthenticationTests.md)
+  - [CryptoAlgorithm](CryptoAlgorithm.md):
     Natively supported crypto algorithms
-  - [Headers](/Headers):
+  - [Headers](Headers.md):
     Headers required for the authentication
-  - [PostMethods](/PostMethods):
+  - [PostMethods](PostMethods.md):
     Allowed methods with body
-  - [GetMethods](/GetMethods):
+  - [GetMethods](GetMethods.md):
     Allowed methods without body
-  - [AuthenticationError](/AuthenticationError):
+  - [AuthenticationError](AuthenticationError.md):
     Errors related with the authentication of the app and api
-  - [CompareErrors](/CompareErrors):
+  - [CompareErrors](CompareErrors.md):
     Internal errors not triggered by the app authentication
 
 # Global Functions
 
-  - [replacePlaceholders(signature:​values:​)](/replacePlaceholders\(signature_values_\)):
+  - [replacePlaceholders(signature:​values:​)](replacePlaceholders\(signature_values_\).md):
     Replaces the placeholders with the propper values
-  - [stringFromResult(result:​length:​)](/stringFromResult\(result_length_\)):
+  - [stringFromResult(result:​length:​)](stringFromResult\(result_length_\).md):
     Converts the HMAC given in `UnsafeMutablePointer<CUnsignedChar>` to a hex string
 
 # Global Variables
 
-  - [package](/package)
+  - [package](package.md)
 
 # Extensions
 
-  - [String](/String)
+  - [String](String.md)
