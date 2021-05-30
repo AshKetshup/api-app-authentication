@@ -8,3 +8,5 @@ src/CSharp/NET5/obj/
 src/CSharp/NETCore/bin/
 
 src/CSharp/NETCore/obj/
+
+src/Swift/APIAppAuthentication/.swiftpm/
