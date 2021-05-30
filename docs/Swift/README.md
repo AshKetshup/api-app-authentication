@@ -3,33 +3,24 @@
 ## Table of Contents
 
 * [Dependencies](#Dependencies)
-* Installation
-    * [Server Side](#Installation-Server-Side)
-    * [Client Side](#Installation-Client-Side)
+* [Installation](#Installation)
 * Usage
     * [Server Side](#Usage-Server-Side)
-        * **[Class Documentation](AppAuthenticationServer.md)**
     * [Client Side](#Usage-Client-Side)
-        * **[Class Documentation](AppAuthenticationClient.md)**
     * [Advanced Usage](#Advanced-Usage)
+* [Full Documentation](Full_Docs/Home.md)
 
 ## Dependencies
 
 * _None_
 
-## Installation Server Side
+## Installation
 
-Get the latest [release](https://github.com/PedroCavaleiro/api-app-authentication/releases) for Swift
+Using Swift Package Manager add the following link `https://github.com/PedroCavaleiro/api-app-authentication.git`
 
-Import the file `AppAuth.swift` located on the `Server` folder onto your project
-
-## Installation Client Side
-
-Import the file `AppAuth.swift` located on the `Client` folder onto your project
+SPM will now resolve the git repository and you can select a version (recomend the default) or select a branch (either `main` or `Swift`)
 
 ## Usage Server Side
-
-**Full documentation for the [server side](AppAuthenticationServer.md)**
 
 The example provided below is using [Vapor](https://vapor.codes/) Server
 
@@ -38,7 +29,7 @@ After having imported the file onto your project import the class and initialize
 ```swift
 import Fluent // not required for this library, it's only part of the example
 import Vapor  // not required for this library, it's only part of the example
-import AppAuthenticationServer
+import APIAppAuthentication
 
 struct YourController: RouteCollection {
     let app: Application
@@ -51,7 +42,7 @@ struct YourController: RouteCollection {
         // this initialization should be performed before the request
         do {
             self.appAuth = try AppAuthenticationServer(authorizedApps: apps)
-        catch AppAuthenticationServer.CompareErrors.NoAppsProvided {
+        catch CompareErrors.NoAppsProvided {
             print("no authorized apps")
         }
     }
@@ -73,9 +64,9 @@ private func loginUser(_ req: Request) throws -> EventLoopFuture<Response> {
     do {
         try self.appAuth.authenticateApp(headers: headers, body: loginData, method: .POST)
     }
-    catch AppAuthenticationServer.AuthenticationError.AppIdNotFound { print("app id not found") }
-    catch AppAuthenticationServer.AuthenticationError.InvalidChallenge { print("invalid challenge") }
-    catch AppAuthenticationServer.AuthenticationError.HeadersNotFound(let missingHeader) { print("Missing headers \(missingHeader.rawValue)") }
+    catch AuthenticationError.AppIdNotFound { print("app id not found") }
+    catch AuthenticationError.InvalidChallenge { print("invalid challenge") }
+    catch AuthenticationError.HeadersNotFound(let missingHeader) { print("Missing headers \(missingHeader.rawValue)") }
 }
 
 // method without body (in this example a GET)
@@ -87,20 +78,18 @@ private func getEmail(_ req: Request) throws -> EventLoopFuture<Response> {
     do {
         try self.appAuth.authenticateApp(headers: headers, method: .GET)
     }
-    catch AppAuthenticationServer.AuthenticationError.AppIdNotFound { print("app id not found") }
-    catch AppAuthenticationServer.AuthenticationError.InvalidChallenge { print("invalid challenge") }
-    catch AppAuthenticationServer.AuthenticationError.HeadersNotFound(let missingHeader) { print("Missing headers \(missingHeader.rawValue)") }
+    catch AuthenticationError.AppIdNotFound { print("app id not found") }
+    catch AuthenticationError.InvalidChallenge { print("invalid challenge") }
+    catch AuthenticationError.HeadersNotFound(let missingHeader) { print("Missing headers \(missingHeader.rawValue)") }
 }
 ```
 
 ## Usage Client Side
 
-**File documentation for [client side](AppAuthenticationClient.md)**
-
 After having imported the file onto your project import the class and initialize the library
 
 ```swift
-import AppAuthenticationClient
+import APIAppAuthentication
 
 class YourClass {
 
