@@ -47,7 +47,7 @@ You can find the documentation per language here:
     * [appauth.py (server)](docs/Python/appauth_server.md)
     * [appauth.py (client)](docs/Python/appauth_client.md)
 * [Swift](docs/Swift/README.md)
-    * [Full library documentation](docs/Swift/Home.md)
+    * [Full library documentation](docs/Swift/Full_Docs/Home.md)
 * [C#](docs/CSharp/README.md)
     * [Full library documentation (.NET 5)](docs/CSharp/net5_fulldoc.md)
     * [Full library documentation (.NET Core / .NET Framework)](docs/CSharp/netcore_fulldoc.md)
