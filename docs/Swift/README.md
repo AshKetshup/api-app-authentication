@@ -6,10 +6,9 @@
 * [Installation](#Installation)
 * Usage
     * [Server Side](#Usage-Server-Side)
-        * **[Class Documentation](AppAuthenticationServer.md)**
     * [Client Side](#Usage-Client-Side)
-        * **[Class Documentation](AppAuthenticationClient.md)**
     * [Advanced Usage](#Advanced-Usage)
+* [Full Documentation](Full_Docs/Home.md)
 
 ## Dependencies
 
@@ -22,8 +21,6 @@ Using Swift Package Manager add the following link `https://github.com/PedroCava
 SPM will now resolve the git repository and you can select a version (recomend the default) or select a branch (either `main` or `Swift`)
 
 ## Usage Server Side
-
-**Full documentation for the [server side](AppAuthenticationServer.md)**
 
 The example provided below is using [Vapor](https://vapor.codes/) Server
 
@@ -88,8 +85,6 @@ private func getEmail(_ req: Request) throws -> EventLoopFuture<Response> {
 ```
 
 ## Usage Client Side
-
-**File documentation for [client side](AppAuthenticationClient.md)**
 
 After having imported the file onto your project import the class and initialize the library
 
