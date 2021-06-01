@@ -51,3 +51,5 @@ You can find the documentation per language here:
 * [C#](docs/CSharp/README.md)
     * [Full library documentation (.NET 5)](docs/CSharp/net5_fulldoc.md)
     * [Full library documentation (.NET Core / .NET Framework)](docs/CSharp/netcore_fulldoc.md)
+* [PHP](docs/php/README.md)
+    * [Full library documentation](docs/php/full_docs/ApiIndex.md)
