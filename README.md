@@ -6,6 +6,8 @@ Currently supported languages:
 
 * Python
 * Swift
+* C#
+* PHP
 
 ## Requirements
 
