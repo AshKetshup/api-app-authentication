@@ -4,7 +4,7 @@ require_once "Common.php";
 
 class ApiAppAuthenticatorServer {
 
-    protected array $authorized_apps;
+    protected $authorized_apps;
 
     /**
      * Constructor
@@ -12,7 +12,7 @@ class ApiAppAuthenticatorServer {
      */
     public function __construct($authorized_apps) {
         $this->authorized_apps = $authorized_apps;
-        if (sizeof($cars) <= 0) {
+        if (sizeof($authorized_apps) <= 0) {
             throw new NoAuthorizedApps();
         }
     }
